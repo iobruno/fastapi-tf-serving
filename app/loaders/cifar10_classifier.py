@@ -24,7 +24,7 @@ def predict(image_url: str):
 
 
 def fmt_number(number):
-    return float("%.4f" % float(number)) * 100
+    return f"{float('%.4f' % float(number)) * 100}%"
 
 
 def fmt_predictions(arr):
