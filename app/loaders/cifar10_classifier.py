@@ -1,10 +1,16 @@
 import httpx as r
 from io import BytesIO
 from PIL import Image
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import img_to_array
-from keras.preprocessing.image import array_to_img
-import keras.preprocessing.image
+
+from tensorflow.keras.utils import img_to_array
+from tensorflow.keras.models import load_model
+from pathlib import Path
+
+models_dir = Path(__file__).parent.parent.parent.joinpath("models")
+model = load_model(models_dir.joinpath("cifar-10-model.h5"))
+
+labels = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
+
 
 def predict(image_url: str):
     response = r.get(image_url)
@@ -12,10 +18,17 @@ def predict(image_url: str):
         .open(BytesIO(response.content))\
         .convert('RGB')\
         .resize((32, 32))
-    img_array = keras.load
+    img_array = img_to_array(img)
+    arr = img_array[None, ...]
+    return model.predict(arr)
 
 
+def fmt_number(number):
+    return float("%.4f" % float(number)) * 100
 
-if __name__ == "__main__":
-    url = "https://aeromagazine.uol.com.br/media/versions/e170_united_express_2_free_big.jpg"
-    predict(url)
+
+def fmt_predictions(arr):
+    return {
+        labels[idx]: fmt_number(prediction)
+        for idx, prediction in enumerate(arr)
+    }
