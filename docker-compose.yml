@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: iobruno/fastapi-model-serve
+    ports:
+      - "8000:8000"
+    environment:
+      - PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
