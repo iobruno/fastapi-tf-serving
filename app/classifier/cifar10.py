@@ -7,9 +7,12 @@ from tensorflow.keras.models import load_model
 from pathlib import Path
 
 models_dir = Path(__file__).parent.parent.parent.joinpath("models")
-model = load_model(models_dir.joinpath("cifar-10-model.h5"))
+model = load_model(models_dir.joinpath("cifar10_model_v2.h5"))
 
-labels = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
+labels = [
+    "airplane", "automobile", "bird", "cat", "deer",
+    "dog", "frog", "horse", "ship", "truck"
+]
 
 
 def predict(image_url: str):
