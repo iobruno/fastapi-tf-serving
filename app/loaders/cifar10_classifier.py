@@ -23,12 +23,8 @@ def predict(image_url: str):
     return model.predict(arr)
 
 
-def fmt_number(number):
-    return f"{float('%.4f' % float(number)) * 100}%"
-
-
 def fmt_predictions(arr):
     return {
-        labels[idx]: fmt_number(prediction)
+        labels[idx]: round(float(prediction) * 100, 5)
         for idx, prediction in enumerate(arr)
     }
