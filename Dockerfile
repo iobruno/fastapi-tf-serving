@@ -1,14 +1,24 @@
-FROM python:3.7.3-stretch
+FROM amazonlinux:2
 
 ADD app /fastapi/app
 ADD models /fastapi/models
-ADD requirements.txt /fastapi/
 ADD pyproject.toml /fastapi/
 
 WORKDIR /fastapi
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+ENV POETRY_VIRTUALENVS_CREATE=false
+
+RUN amazon-linux-extras enable python3.8 &&  \
+    yum install python38 pip -y && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 && \
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+RUN $HOME/.poetry/bin/poetry install --no-root && \
+    rm -Rf /root/.poetry && \
+    rm -Rf /root/.local && \
+    rm -Rf /usr/share/doc/ &&  \
+    rm -Rf /tmp/ && \
+    rm -Rf /var/cache
 
 ENTRYPOINT ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 
