@@ -1,6 +1,5 @@
 from fastapi import APIRouter
-from app.classifier.cifar10 import predict
-from app.classifier.cifar10 import fmt_predictions
+from classifier.cifar10 import predict, fmt_predictions
 
 router = APIRouter()
 
