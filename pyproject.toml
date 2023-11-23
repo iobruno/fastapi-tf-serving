@@ -1,21 +1,27 @@
-[tool.poetry]
-name = "fast-api-model-serving"
+[project]
+name = ""
 version = "1.0"
 description = "Fast API for serving ML Models"
-authors = ["iobruno <bruno.oliveira@n26brasil.com>"]
+license = {text = "CC-BY-SA-4.0"}
+readme = "README.md"
+authors = [
+    {name = "Bruno Oliveira", email = "bruno.ariev@gmail.com"},
+]
 
-[tool.poetry.dependencies]
-python = "~3.8"
-fastapi = "0.78.0"
-httpx = "^0.23.0"
-Pillow = "^9.1.1"
-uvicorn = "0.17.6"
-tensorflow-aarch64 = { version = "2.9.0", markers = "platform_system == 'Linux' and platform_machine == 'aarch64'" }
-tensorflow-cpu     = { version = "2.9.0", markers = "platform_system == 'Linux' and platform_machine == 'x86_64'" }
-tensorflow-macos = { version = "2.9.0", markers = "platform_system == 'Darwin'" }
-tensorflow-metal = { version = "0.5.0", markers = "platform_system == 'Darwin'" }
+requires-python = ">=3.10,<3.12"
 
+dependencies = [
+    "fastapi>=0.104.1",
+    "httpx>=0.25.1",
+    "Pillow>=10.1.0",
+    "uvicorn>=0.24.0.post1",
+    "tensorflow-metal>=1.1.0;    sys_platform == 'darwin'",
+    "tensorflow-macos>=2.15.0;   sys_platform == 'darwin'",
+    "tensorflow-cpu>=2.15.0;     sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "tensorflow-aarch64>=2.15.0; sys_platform == 'linux' and platform_machine == 'aarch64'",
+]
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.1.6",
+]
