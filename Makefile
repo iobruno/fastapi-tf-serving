@@ -1,10 +1,10 @@
 arch_flag := $(shell uname -m)
 
 setup:
-	@poetry install
+	@pdm install
 
 debug:
-	@uvicorn app.main:app --host 0.0.0.0 --port 9000 --reload
+	@uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8000 --reload
 
 docker-image:
 	@docker buildx build -t iobruno/fastapi-model-serve:latest-aarch64 . --platform linux/arm64
