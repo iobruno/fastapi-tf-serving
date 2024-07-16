@@ -1,7 +1,7 @@
 # Fast API TF-Model Serving
 
-![Python](https://img.shields.io/badge/Python-3.10_|_3.11-4B8BBE.svg?style=flat&logo=python&logoColor=FFD43B&labelColor=306998)
-![Tensorflow](https://img.shields.io/badge/TensorFlow-2.15-FF7400.svg?style=flat&logo=tensorflow&logoColor=FF7400&labelColor=212121)
+![Python](https://img.shields.io/badge/Python-3.12_|_3.11_|_3.10-4B8BBE.svg?style=flat&logo=python&logoColor=FFD43B&labelColor=306998)
+![Tensorflow](https://img.shields.io/badge/TensorFlow-2.16-FF7400.svg?style=flat&logo=tensorflow&logoColor=FF7400&labelColor=212121)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688.svg?style=flat&logo=FastAPI&logoColor=009688&labelColor=212121)
 ![Jupyter](https://img.shields.io/badge/Jupyter-31393F.svg?style=flat&logo=jupyter&logoColor=F37726&labelColor=31393F)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
