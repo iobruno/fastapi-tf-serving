@@ -1,27 +1,31 @@
 [project]
 name = ""
 version = "1.0"
-description = "Fast API for serving ML Models"
+description = "FastAPI for serving Tensorflow Models"
 license = {text = "CC-BY-SA-4.0"}
 readme = "README.md"
 authors = [
     {name = "Bruno Oliveira", email = "bruno.ariev@gmail.com"},
 ]
 
-requires-python = ">=3.10,<3.12"
+requires-python = ">=3.10,<3.13"
 
 dependencies = [
-    "fastapi>=0.104.1",
-    "httpx>=0.25.1",
-    "Pillow>=10.1.0",
-    "uvicorn>=0.24.0.post1",
-    "tensorflow-metal>=1.1.0;    sys_platform == 'darwin'",
-    "tensorflow-macos>=2.15.0;   sys_platform == 'darwin'",
-    "tensorflow-cpu>=2.15.0;     sys_platform == 'linux' and platform_machine == 'x86_64'",
-    "tensorflow-aarch64>=2.15.0; sys_platform == 'linux' and platform_machine == 'aarch64'",
+    "fastapi>=0.111.1,<1.0",
+    "httpx>=0.27.0,<1.0",
+    "pillow>=10.4.0,<11.0",
+    "uvicorn>=0.30.1,<1.0",
+    "tensorflow-cpu>=2.16.1,<3.0;     sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "tensorflow-aarch64>=2.16.1,<3.0; sys_platform == 'linux' and platform_machine == 'aarch64'",
+    "tensorflow-macos>=2.16.1,<3.0;   sys_platform == 'darwin'",
 ]
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "ruff>=0.1.6",
+    "jupyterlab>=4.2.3",
+    "ruff>=0.5.1",
 ]
+
+[tool.ruff]
+line-length = 100
+lint.select = ["F", "E", "W", "I001"]
