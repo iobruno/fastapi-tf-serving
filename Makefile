@@ -18,11 +18,23 @@ docker-image-amd64:
 
 docker-run:
 ifeq (${arch_flag},arm64)
-	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-tf-serve.aarch64
+	@docker run --rm \
+		-e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python \
+		-p 8000:8000 \
+		--name fastapi-tf-serve \
+		iobruno/fastapi-tf-serve.aarch64
 endif
 ifeq (${arch_flag},aarch64)
-	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-tf-serve.aarch64
+	@docker run --rm \
+		-e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python \
+		-p 8000:8000 \
+		--name fastapi-tf-serve \
+		iobruno/fastapi-tf-serve.aarch64
 endif
 ifeq (${arch_flag},x86_64)
-	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-tf-serve.amd64
+	@docker run --rm \
+		-e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python \
+		-p 8000:8000 \
+		--name fastapi-tf-serve \
+		iobruno/fastapi-tf-serve.amd64
 endif
