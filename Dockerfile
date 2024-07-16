@@ -1,5 +1,5 @@
 # Builder stage
-FROM python:3.11-slim AS builder
+FROM python:3.12-slim AS builder
 
 ADD app /fastapi/app
 ADD models /fastapi/models
@@ -7,17 +7,19 @@ ADD pyproject.toml pdm.lock README.md /fastapi/
 
 WORKDIR /fastapi
 
-RUN pip install -U pip setuptools wheel && \
+RUN apt update --allow-insecure-repositories && \
+    apt install pkg-config libhdf5-dev gcc -y && \
+    pip install -U pip setuptools wheel && \
     pip install pdm && \
     mkdir __pypackages__ && \
     pdm sync --prod --no-editable
 
 # Runner stage
-FROM python:3.11-slim AS runner
+FROM python:3.12-slim AS runner
 
 ENV PYTHONPATH=/usr/local/lib/python/
-COPY --from=builder /fastapi/__pypackages__/3.11/lib /usr/local/lib/python/
-COPY --from=builder /fastapi/__pypackages__/3.11/bin/* /usr/local/bin/
+COPY --from=builder /fastapi/__pypackages__/3.12/lib /usr/local/lib/python/
+COPY --from=builder /fastapi/__pypackages__/3.12/bin/* /usr/local/bin/
 COPY --from=builder /fastapi/app /fastapi/app
 COPY --from=builder /fastapi/models /fastapi/models
 
