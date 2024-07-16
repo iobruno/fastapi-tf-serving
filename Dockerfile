@@ -7,8 +7,8 @@ ADD pyproject.toml pdm.lock README.md /fastapi/
 
 WORKDIR /fastapi
 
-RUN apt update --allow-insecure-repositories && \
-    apt install pkg-config libhdf5-dev gcc -y && \
+RUN apt-get update --allow-insecure-repositories && \
+    apt-get install pkg-config libhdf5-dev gcc -y && \
     pip install -U pip setuptools wheel && \
     pip install pdm && \
     mkdir __pypackages__ && \
@@ -16,6 +16,9 @@ RUN apt update --allow-insecure-repositories && \
 
 # Runner stage
 FROM python:3.12-slim AS runner
+
+RUN apt-get update --allow-insecure-repositories && \
+    apt-get install libhdf5-dev -y
 
 ENV PYTHONPATH=/usr/local/lib/python/
 COPY --from=builder /fastapi/__pypackages__/3.12/lib /usr/local/lib/python/
