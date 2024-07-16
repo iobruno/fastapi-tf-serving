@@ -11,18 +11,18 @@ debug:
 docker-image: docker-image-arm64 docker-image-amd64 
 
 docker-image-arm64:
-	@docker buildx build -t iobruno/fastapi-model-serve:aarch64 . --platform linux/arm64
+	@docker buildx build -t iobruno/fastapi-tf-serve.aarch64 . --platform linux/arm64 --no-cache
 
 docker-image-amd64:
-	@docker buildx build -t iobruno/fastapi-model-serve:amd64 . --platform linux/amd64
+	@docker buildx build -t iobruno/fastapi-tf-serve.amd64 . --platform linux/amd64 --no-cache
 
 docker-run:
 ifeq (${arch_flag},arm64)
-	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-model-serve:aarch64
+	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-tf-serve.aarch64
 endif
 ifeq (${arch_flag},aarch64)
-	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-model-serve:aarch64
+	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-tf-serve.aarch64
 endif
 ifeq (${arch_flag},x86_64)
-	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-model-serve:amd64
+	@docker run -p 8000:8000 -e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python iobruno/fastapi-tf-serve.amd64
 endif
