@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.2"
-content_hash = "sha256:e7b1a27c26e5751c8c911e2a3345cfb3be43346c7803fd1ab09acabefe851c97"
+content_hash = "sha256:ec2415293b347d3c0e3c9fe0c49355a2615ef2d0cf3505b95dc306b96c94bec2"
 
 [[package]]
 name = "absl-py"
@@ -609,7 +609,6 @@ version = "3.11.0"
 requires_python = ">=3.8"
 summary = "Read and write HDF5 files from Python"
 groups = ["default"]
-marker = "sys_platform == \"linux\" and (platform_machine == \"aarch64\" or platform_machine == \"x86_64\") or platform_system == \"Darwin\" and platform_machine == \"arm64\" and sys_platform == \"darwin\" or platform_system == \"Windows\" and sys_platform == \"darwin\""
 dependencies = [
     "numpy>=1.17.3",
 ]
@@ -1321,7 +1320,6 @@ version = "1.26.4"
 requires_python = ">=3.9"
 summary = "Fundamental package for array computing in Python"
 groups = ["default"]
-marker = "platform_system == \"Windows\" and sys_platform == \"darwin\" or platform_system == \"Windows\" and (platform_machine == \"aarch64\" or platform_machine == \"x86_64\") and (sys_platform == \"linux\" or sys_platform == \"darwin\") or sys_platform == \"linux\" and (platform_machine == \"aarch64\" or platform_machine == \"x86_64\") or (platform_system == \"Darwin\" or platform_system == \"Windows\") and sys_platform == \"darwin\" and platform_machine == \"arm64\""
 files = [
     {file = "numpy-1.26.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:9ff0f4f29c51e2803569d7a51c2304de5554655a60c5d776e35b4a41413830d0"},
     {file = "numpy-1.26.4-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:2e4ee3380d6de9c9ec04745830fd9e2eccb3e6cf790d39d7b98ffd19b0dd754a"},
