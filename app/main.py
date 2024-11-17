@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.responses import RedirectResponse
 from routers import predict
-import uvicorn
+from starlette.responses import RedirectResponse
 
 app = FastAPI()
 app.include_router(predict.router)

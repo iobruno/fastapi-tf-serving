@@ -20,21 +20,50 @@ GitHub project for Tensorflow-based Object Detection on the CIFAR-10 dataset, se
 
 ## Up and Running
 
-**Building a Docker Image**:
+### Developer Setup 
+
+**1.** Create and activate a virtualenv with conda:
+```shell
+conda create -n tfserve python=3.11 -y
+conda activate tfserve
+```
+
+**2.** Install the dependencies on `pyproject.toml`:
+```shell
+pdm sync --no-self
+```
+
+**3.** Start the app with `gunicorn` with:
+```shell
+uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8000 --reload
+```
+or simply execute:
+```
+make run
+```
+
+**4.** Access the Swagger UI at:
+```
+open http://localhost:8000
+```
+
+## Containerization and Testing
+
+**1.** Build the Docker Image with:
+
 ```shell
 make docker-image
 ```
 
-**Running on Docker**:
+**2.** Spin up the container with:
 ```shell
 make docker-run
 ```
 
-**Local Development**:
-```shell
-make setup
+**3.** Access the Swagger UI at:
 ```
-
+open http://localhost:8000
+```
 
 ## TODO
 - [x] PEP-517: Packaging and dependency management with PDM

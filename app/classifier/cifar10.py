@@ -1,10 +1,11 @@
-import httpx as r
 from io import BytesIO
-from PIL import Image
-
-from tensorflow.keras.utils import img_to_array
-from tensorflow.keras.models import load_model
 from pathlib import Path
+
+import httpx as r
+import numpy as np
+from PIL import Image
+from tensorflow.keras.models import load_model
+from tensorflow.keras.utils import img_to_array
 
 models_dir = Path(__file__).parent.parent.parent.joinpath("models")
 model = load_model(models_dir.joinpath("cifar10_model_v2.h5"))
@@ -23,16 +24,17 @@ labels = [
 ]
 
 
-def predict(image_url: str):
+def predict(image_url: str) -> dict:
     response = r.get(image_url)
     img = Image.open(BytesIO(response.content)).convert("RGB").resize((32, 32))
-    img_array = img_to_array(img)
-    arr = img_array[None, ...]
-    return model.predict(arr)
+    img_arr_3d: np.array = img_to_array(img)
+    img_arr_4d: np.array = img_arr_3d[None, ...]
+    predictions: np.array = model.predict(img_arr_4d).flatten()
+    return format(predictions)
 
 
-def fmt_predictions(arr):
+def format(predictions: np.array) -> dict:
     return {
-        labels[idx]: round(float(prediction) * 100, 5)
-        for idx, prediction in enumerate(arr)
+        labels[index]: round(float(prediction) * 100, 5)
+        for index, prediction in enumerate(predictions)
     }

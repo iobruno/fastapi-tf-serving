@@ -1,10 +1,9 @@
+from classifier.cifar10 import predict
 from fastapi import APIRouter
-from classifier.cifar10 import predict, fmt_predictions
 
 router = APIRouter()
 
 
 @router.get("/predict/cifar10")
-async def classify_image(url: str):
-    predictions = predict(url).flatten()
-    return fmt_predictions(predictions)
+async def classify_image(url: str) -> dict:
+    return predict(url)
