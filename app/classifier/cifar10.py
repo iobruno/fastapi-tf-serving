@@ -24,7 +24,7 @@ labels = [
 ]
 
 
-def predict(image_url: str):
+def predict(image_url: str) -> dict:
     response = r.get(image_url)
     img = Image.open(BytesIO(response.content)).convert("RGB").resize((32, 32))
     img_arr_3d: np.array = img_to_array(img)

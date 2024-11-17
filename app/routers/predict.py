@@ -5,5 +5,5 @@ router = APIRouter()
 
 
 @router.get("/predict/cifar10")
-async def classify_image(url: str):
+async def classify_image(url: str) -> dict:
     return predict(url)
