@@ -10,27 +10,24 @@
 
 GitHub project for Tensorflow-based Object Detection on the CIFAR-10 dataset, served with FastAPI.
 
-
 ## Tech Stack
 - [Tensorflow 2](https://www.tensorflow.org/guide)
 - [FastAPI](https://fastapi.tiangolo.com/tutorial/)
-- [PDM](https://pdm-project.org/latest/usage/dependency/)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 - [Docker](https://docs.docker.com/get-docker/)
-
 
 ## Up and Running
 
 ### Developer Setup 
 
-**1.** Create and activate a virtualenv with conda:
+**1.** Install the dependencies on `pyproject.toml`:
 ```shell
-conda create -n tfserve python=3.11 -y
-conda activate tfserve
+uv sync
 ```
 
-**2.** Install the dependencies on `pyproject.toml`:
+**2.** Activate the virtualenv created by `uv`:
 ```shell
-pdm sync --no-self
+source .venv/bin/activate
 ```
 
 **3.** Start the app with `gunicorn` with:
