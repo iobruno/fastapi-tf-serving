@@ -9,10 +9,10 @@ run:
 	@uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8000 --reload
 
 docker-image-arm64:
-	@docker buildx build -t $(IMG_NAME_ARM64) . --platform linux/arm64
+	@docker buildx build -t $(IMG_NAME_ARM64) . --platform linux/arm64 --no-cache
 
 docker-image-amd64:
-	@docker buildx build -t $(IMG_NAME_AMD64) . --platform linux/amd64
+	@docker buildx build -t $(IMG_NAME_AMD64) . --platform linux/amd64 --no-cache
 
 docker-run-arm64:
 	@docker run --rm \
