@@ -9,22 +9,22 @@ run:
 	@uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8000 --reload
 
 docker-image-arm64:
-	@docker buildx build -t $(IMG_NAME_ARM64) . --platform linux/arm64 --no-cache
+	@docker buildx build -t $(IMG_NAME_ARM64) . --platform linux/arm64
 
 docker-image-amd64:
-	@docker buildx build -t $(IMG_NAME_AMD64) . --platform linux/amd64 --no-cache
+	@docker buildx build -t $(IMG_NAME_AMD64) . --platform linux/amd64
 
 docker-run-arm64:
 	@docker run --rm \
 		-e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python \
-		-p 8000:8000 \
+		-p 8080:8080 \
 		--name fastapi-tf-serve \
 		$(IMG_NAME_ARM64)
 
 docker-run-amd64:
 	@docker run --rm \
 		-e PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python \
-		-p 8000:8000 \
+		-p 8080:8080 \
 		--name fastapi-tf-serve \
 		$(IMG_NAME_ARM64)
 
