@@ -2,8 +2,8 @@
 
 arch_flag := $(shell uname -m)
 
-IMG_NAME_ARM64 := iobruno/fastapi-tf-serve:aarch64
-IMG_NAME_AMD64 := iobruno/fastapi-tf-serve:amd64
+IMG_NAME_ARM64 := iobruno/fastapi-tfserve:aarch64
+IMG_NAME_AMD64 := iobruno/fastapi-tfserve:amd64
 
 run:
 	@uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8000 --reload
