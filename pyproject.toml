@@ -1,5 +1,5 @@
 [project]
-name = "tfserve"
+name = "fastapi-tfserve"
 version = "1.0"
 description = "FastAPI for serving Tensorflow Models"
 license = {text = "CC-BY-SA-4.0"}
