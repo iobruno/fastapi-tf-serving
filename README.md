@@ -32,10 +32,6 @@ source .venv/bin/activate
 
 **3.** Start the app with `gunicorn` with:
 ```shell
-uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8080 --reload
-```
-or simply execute:
-```
 make run
 ```
 
