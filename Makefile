@@ -6,7 +6,7 @@ IMG_NAME_ARM64 := iobruno/fastapi-tfserve:aarch64
 IMG_NAME_AMD64 := iobruno/fastapi-tfserve:amd64
 
 run:
-	@uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8000 --reload
+	@uvicorn --app-dir app/ main:app --host 0.0.0.0 --port 8080 --reload
 
 docker-image-arm64:
 	@docker buildx build -t $(IMG_NAME_ARM64) . --platform linux/arm64 --no-cache
