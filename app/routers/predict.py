@@ -4,6 +4,6 @@ from fastapi import APIRouter
 router = APIRouter()
 
 
-@router.get("/predict/cifar10")
+@router.get("/cifar10/predict")
 async def classify_image(url: str) -> dict:
     return predict(url)
