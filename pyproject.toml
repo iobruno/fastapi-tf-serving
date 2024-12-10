@@ -2,7 +2,6 @@
 name = "fastapi-tfserve"
 version = "1.0"
 description = "FastAPI for serving Tensorflow Models"
-license = {text = "CC-BY-SA-4.0"}
 readme = "README.md"
 requires-python = ">=3.10,<3.12"
 
